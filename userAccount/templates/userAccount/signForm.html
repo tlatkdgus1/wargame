@@ -1,0 +1,6 @@
+<form name="sign" action={% url 'user:signForm' %} method="POST">{% csrf_token %}
+	아이디<input type="text" name="user_id"><br>
+	비밀번호<input type="password" name="user_pw"><br>
+	이메일 주소<input type="email" name="user_email"><br>
+	<input type="submit" name="회원가입">
+</form>

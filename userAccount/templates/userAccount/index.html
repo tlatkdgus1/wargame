@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Indie Flower&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+ 
+	<title>H@ck Wargame</title>
+</head>
+<body>
+	<div class="page-title">
+		<h1><a>H@ck Wargame</a></h1>
+	</div>
+	<div style="height: auto; width: 100%; padding-left: 10px;">
+	{% if user.is_authenticated %}
+		<h1><p>Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
+		<button><a href={% url 'user:logout' %}>Logout</a></button>
+	{% else %}
+		<p>Login please</p>
+	{% endif %}
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,5 @@
+	<form name="login" action={% url 'user:loginForm' %} method="POST">{% csrf_token %}
+		아이디<input type="text" name="user_id">
+		비밀번호<input type="password" name="user_pw">
+		<input type="submit" ="로그인">
+	</form>
