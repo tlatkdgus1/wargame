@@ -1,6 +1,54 @@
-<form name="sign" action={% url 'user:signForm' %} method="POST">{% csrf_token %}
-	아이디<input type="text" name="user_id"><br>
-	비밀번호<input type="password" name="user_pw"><br>
-	이메일 주소<input type="email" name="user_email"><br>
-	<input type="submit" name="회원가입">
-</form>
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="dist/css/flat-ui.css" rel="stylesheet">
+<link href="docs/assets/css/demo.css" rel="stylesheet">
+	<title></title>
+</head>
+<body style="background-color: #ECF0F0 !important">
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+	<center><h1>H@ck Wargame</h1></center>
+	<div class="row">
+		<div class="sign">
+			<div class="col-xs-4 col-md-4 col-sm-4">
+			</div>
+			<div class="col-xs-4 col-md-4 col-sm-4">
+			    <div class="sign-form">
+			     	<form name="sign" action={% url 'user:signForm' %} method="POST">{% csrf_token %}
+				        <div class="form-group">
+				            <input type="text" class="form-control login-field" value="" placeholder="Enter your Id" name="user_id" />
+				            <label class="login-field-icon fui-user" for="login-name"></label>
+				        </div>
+					    <div class="form-group">
+					          <input type="password" class="form-control login-field" value="" placeholder="Password" name="user_pw" />
+					          <label class="login-field-icon fui-lock" for="login-pass"></label>
+					     </div>
+					    <div class="form-group">
+					          <input type="email" class="form-control login-field" value="" placeholder="Email" name="user_email" />
+					          <label class="login-field-icon fui-lock" for="login-pass"></label>
+					     </div>
+				        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign</button>
+				    </form>
+			    </div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
+ 
+

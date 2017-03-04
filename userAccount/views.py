@@ -17,7 +17,7 @@ class SignForm(View):
 		user_model = MyUser.objects.create(username = user_id, email = user_email)
 		user_model.set_password(user_pw)
 		user_model.save()
-		return HttpResponse("OK")
+		return render(request, 'userAccount/index.html')
 
 class LoginForm(View):
 	def get(self, request, *args, **kwargs):
@@ -30,10 +30,9 @@ class LoginForm(View):
 		user = authenticate(username=user_id, password=user_pw)
 		if user is not None:
 			login(request, user)
-			response = render(request, 'userAccount/index.html')
-			return response
+			return render(request, 'userAccount/index.html')
 		else:
-			return HttpResponse("Bad")
+			return render(request, 'userAccount/loginForm.html')
 
 def logout(request):
 	_logout(request)

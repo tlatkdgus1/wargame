@@ -15,9 +15,13 @@
 		<div style="height: auto; width: 100%; padding-left: 10px;">
 	{% if user.is_authenticated %}
 		<h1><p>Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
-		<button><a href={% url 'user:logout' %}>Logout</a></button>
+		<button type="button" class="btn btn-warning"><a href={% url 'user:logout' %}>Logout</a></button>
 	{% else %}
-		<p>Login please</p>
+		<h1><p>Login please</p></h1>
+		<button type="button" class="btn btn-warning"><a href={% url 'user:loginForm' %}>Login</a></button>
+		<button type="button" class="btn btn-warning"><a href={% url 'user:signForm' %}>Sign</a></button>
+	
+
 	{% endif %}
 	</div>
 	</div>

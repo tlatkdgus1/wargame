@@ -1,3 +1,4 @@
+
 .page-title {
     background-color: #FCA205;
     margin-top: 0;
@@ -14,9 +15,15 @@
 	margin-left: 20px;
 }
 
-h1 a {
+h1 a{
     color: #FCA205;
     font-family: 'Baloo';
+}
+
+h1 {
+    color: #FCA205;
+    font-family: 'Baloo';
+    margin-bottom: 20px;
 }
 
 h2 {
@@ -26,4 +33,8 @@ h2 {
 p {
     font-family: 'Indie Flower';
     font-size: 15pt;
+}
+
+#form {
+    vertical-align: middle;
 }
