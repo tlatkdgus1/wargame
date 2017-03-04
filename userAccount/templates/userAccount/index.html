@@ -11,19 +11,19 @@
 </head>
 <body>
 	<div class="page-title">
-		<h1><a>H@ck Wargame</a></h1>
+		<h1>H@ck Wargame</h1>
 		<div style="height: auto; width: 100%; padding-left: 10px;">
-	{% if user.is_authenticated %}
-		<h1><p>Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
-		<button type="button" class="btn btn-warning"><a href={% url 'user:logout' %}>Logout</a></button>
-	{% else %}
-		<h1><p>Login please</p></h1>
-		<button type="button" class="btn btn-warning"><a href={% url 'user:loginForm' %}>Login</a></button>
-		<button type="button" class="btn btn-warning"><a href={% url 'user:signForm' %}>Sign</a></button>
-	
-
-	{% endif %}
-	</div>
+		{% if user.is_authenticated %}
+			<h1><p style="display:inline-block;">Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
+			<button type="button" class="btn btn-warning"><a href={% url 'user:logout' %}>Logout</a></button>
+		{% else %}
+			<div>
+			<h1><p style="display:inline-block;">Login please</p></h1>
+			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'">Login</button>
+			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'">Sign</button>
+			</div>
+		{% endif %}
+		</div>
 	</div>
 	
 </body>

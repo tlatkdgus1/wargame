@@ -15,26 +15,31 @@
 	margin-left: 20px;
 }
 
-h1 a{
+h1 a {
     color: #FCA205;
     font-family: 'Baloo';
+    display: inline-block;
 }
 
 h1 {
     color: #FCA205;
     font-family: 'Baloo';
     margin-bottom: 20px;
+    display: inline-block;
 }
 
 h2 {
 	color: #FCA205;
+    display: inline-block;
 }
 
-p {
-    font-family: 'Indie Flower';
+h1 p {
+    font-family: 'Baloo';
     font-size: 15pt;
+    display: inline-block;
 }
 
-#form {
-    vertical-align: middle;
+a{
+    color: white;
+    font-family: 'Indie Flower';
 }

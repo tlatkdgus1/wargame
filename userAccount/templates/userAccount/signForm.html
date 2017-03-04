@@ -12,34 +12,31 @@
 <link href="docs/assets/css/demo.css" rel="stylesheet">
 	<title></title>
 </head>
-<body style="background-color: #ECF0F0 !important">
+<body style="background-color: #BDC3C7 !important">
 </br>
 </br>
 </br>
 </br>
 </br>
 </br>
-	<center><h1>H@ck Wargame</h1></center>
 	<div class="row">
 		<div class="sign">
 			<div class="col-xs-4 col-md-4 col-sm-4">
 			</div>
 			<div class="col-xs-4 col-md-4 col-sm-4">
-			    <div class="sign-form">
+			    <div class="sign-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white" >
+					<center><h1>H@ck Wargame</h1></center>
 			     	<form name="sign" action={% url 'user:signForm' %} method="POST">{% csrf_token %}
-				        <div class="form-group">
-				            <input type="text" class="form-control login-field" value="" placeholder="Enter your Id" name="user_id" />
-				            <label class="login-field-icon fui-user" for="login-name"></label>
+				        <div class="form-group" >
+				            <input type="text" class="form-control login-field" value="" placeholder="Enter your Id" name="user_id" style="padding-top: 10px" />
 				        </div>
 					    <div class="form-group">
 					          <input type="password" class="form-control login-field" value="" placeholder="Password" name="user_pw" />
-					          <label class="login-field-icon fui-lock" for="login-pass"></label>
 					     </div>
 					    <div class="form-group">
 					          <input type="email" class="form-control login-field" value="" placeholder="Email" name="user_email" />
-					          <label class="login-field-icon fui-lock" for="login-pass"></label>
 					     </div>
-				        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign</button>
+				        <button type="submit" class="btn btn-warning btn-lg btn-block" style="margin-top: 40px;">Sign</button>
 				    </form>
 			    </div>
 			</div>
