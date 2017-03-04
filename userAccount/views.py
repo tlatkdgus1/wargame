@@ -4,7 +4,7 @@ from django.views.generic import View
 from .models import MyUser
 from django.contrib.auth import authenticate, login, logout as _logout
 
-class signForm(View):
+class SignForm(View):
 	def get(self, request, *args, **kwargs):
 		response = render(request, 'userAccount/signForm.html')
 		return response
@@ -19,7 +19,7 @@ class signForm(View):
 		user_model.save()
 		return HttpResponse("OK")
 
-class loginForm(View):
+class LoginForm(View):
 	def get(self, request, *args, **kwargs):
 		response = render(request, 'userAccount/loginForm.html')
 		return response
@@ -35,7 +35,6 @@ class loginForm(View):
 		else:
 			return HttpResponse("Bad")
 
-	def logout(request):
-		_logout(request)
-		return HttpResponse("test")
-		
+def logout(request):
+	_logout(request)
+	return render(request, 'userAccount/index.html')
