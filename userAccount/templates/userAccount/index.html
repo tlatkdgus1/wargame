@@ -14,12 +14,12 @@
 		<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>
 		<div style="height: auto; width: 100%; padding-left: 10px;">
 		{% if user.is_authenticated %}
-			<h1><p style="display:inline-block;">Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
-			<button type="button" class="btn btn-warning"><a href={% url 'user:logout' %}>Logout</a></button>
+			<h1><p style="display:inline-block; margin-top: 30px; margin-left: 400px;">Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
+			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:logout' %}'" style="margin-left: 20px">Logout</a></button>
 		{% else %}
 			<div>
-			<h1><p style="display:inline-block; margin-top: 30px; margin-left: 100px">Login please</p></h1>
-			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'">Login</button>
+			<h1><p style="display:inline-block; margin-top: 30px; margin-left: 400px">Login please</p></h1>
+			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'" style="margin-left: 20px">Login</button>
 			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'">Sign</button>
 			</div>
 		{% endif %}

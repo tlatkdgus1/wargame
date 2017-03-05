@@ -1,18 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-class MyUser(AbstractUser):
-	question = models.ManytoMany(Question)
 
 class Question(models.Model):
-	title = models.TextField(maxlength=20)
+	title = models.TextField()
 	score = models.IntegerField(default=0)
-	text = models.TextField(maxlength=300)
-	file = models.fileField(maxlength=20)
-	flag = models.TextField(maxlength=50)
-
+	text = models.TextField()
+	file = models.FileField()
+	flag = models.TextField()
 
 	def check_question(self, flag, user):
-    	if flag == self.flag:
-        	user.question.add(self)
+		if flag == self.flag:
+			user.question.add(self)
+
+class MyUser(AbstractUser):
+	question = models.ManyToManyField(Question)
+
           
