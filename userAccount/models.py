@@ -12,7 +12,7 @@ class Question(models.Model):
 	flag = models.TextField(maxlength=50)
 
 
-def check_question(self, flag, user):
-    if flag == self.flag:
-        user.question.add(self)
+	def check_question(self, flag, user):
+    	if flag == self.flag:
+        	user.question.add(self)
           
