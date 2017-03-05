@@ -10,15 +10,15 @@
 	<title>H@ck Wargame</title>
 </head>
 <body>
-	<div class="page-title">
-		<h1>H@ck Wargame</h1>
+	<div class="page-title col-xs-12 col-md-12 col-sm-12">
+		<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>
 		<div style="height: auto; width: 100%; padding-left: 10px;">
 		{% if user.is_authenticated %}
 			<h1><p style="display:inline-block;">Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
 			<button type="button" class="btn btn-warning"><a href={% url 'user:logout' %}>Logout</a></button>
 		{% else %}
 			<div>
-			<h1><p style="display:inline-block;">Login please</p></h1>
+			<h1><p style="display:inline-block; margin-top: 30px; margin-left: 100px">Login please</p></h1>
 			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'">Login</button>
 			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'">Sign</button>
 			</div>
