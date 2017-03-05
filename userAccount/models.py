@@ -9,4 +9,10 @@ class Question(models.Model):
 	score = models.IntegerField(default=0)
 	text = models.TextField(maxlength=300)
 	file = models.fileField(maxlength=20)
-	answer = models.TextField(maxlength=50)
+	flag = models.TextField(maxlength=50)
+
+
+def check_question(self, flag, user):
+    if flag == self.flag:
+        user.question.add(self)
+          
