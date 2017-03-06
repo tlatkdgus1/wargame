@@ -14,17 +14,16 @@ class SignForm(View):
 	def post(self, request, *args, **kwargs):
 
 		questions = Question.objects.order_by('score')
-
 		user_id = request.POST['user_id']
 		user_pw = request.POST['user_pw']
 		user_email = request.POST['user_email']
 
-		if MyUser.objects.get(username=user_id) is None:
+		try:
 			user_model = MyUser.objects.create(username = user_id, email = user_email)
 			user_model.set_password(user_pw)
 			user_model.save()
-		else:
-			error = "Already Register ID"
+		except:
+			error = "중복된 아이디 입니다."
 			return render(request, 'userAccount/signForm.html', {'error':error})
 
 		return render(request, 'userAccount/index.html', {'questions': questions})
@@ -44,7 +43,7 @@ class LoginForm(View):
 			solveQuestions = user.question.all()
 			return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
 		else:	
-			error = "ID or PW is Wrong"
+			error = "아이디 혹은 비밀번호가 잘못되었습니다."
 			return render(request, 'userAccount/loginForm.html', {'error':error})
 
 def logout(request):
