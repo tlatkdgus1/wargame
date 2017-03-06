@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import MyUser
+from .models import Question
 from django.contrib.auth import authenticate, login, logout as _logout
 
 class SignForm(View):
@@ -30,10 +31,13 @@ class LoginForm(View):
 		user = authenticate(username=user_id, password=user_pw)
 		if user is not None:
 			login(request, user)
-			return render(request, 'userAccount/index.html')
+			questions = Question.objects.all()
+			return render(request, 'userAccount/index.html', {'questions': questions})
 		else:
 			return render(request, 'userAccount/loginForm.html')
 
 def logout(request):
 	_logout(request)
-	return render(request, 'userAccount/index.html')
+	questions = Question.objects.order_by('score')
+	return render(request, 'userAccount/index.html', {'questions': questions})
+	

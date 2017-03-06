@@ -9,22 +9,42 @@
  
 	<title>H@ck Wargame</title>
 </head>
-<body>
-	<div class="page-title col-xs-12 col-md-12 col-sm-12">
-		<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>
-		<div style="height: auto; width: 100%; padding-left: 10px;">
+<body style="background-color: #BDC3C7 !important">
+		
 		{% if user.is_authenticated %}
+	<div class="page-title col-xs-12 col-md-12 col-sm-12">
+		<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>	
+		<div style="height: auto; width: 100%; padding-left: 10px;">
 			<h1><p style="display:inline-block; margin-top: 30px; margin-left: 400px;">Welcome, {{ user.username }}. Thanks for logging in.</p></h1>
 			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:logout' %}'" style="margin-left: 20px">Logout</a></button>
-		{% else %}
-			<div>
-			<h1><p style="display:inline-block; margin-top: 30px; margin-left: 400px">Login please</p></h1>
-			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'" style="margin-left: 20px">Login</button>
-			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'">Sign</button>
-			</div>
-		{% endif %}
 		</div>
 	</div>
+	
+		<!-- question models -->
+			{% for question in questions %}
+		   		{{ question.title }}
+			{% endfor %}
+
+		{% else %}
+			<div class="page-title col-xs-12 col-md-12 col-sm-12">
+				<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>
+				<div style="height: auto; width: 100%; padding-left: 10px;"">
+					<h1><p style="display:inline-block; margin-top: 30px; margin-left: 400px">Login please</p></h1>
+					<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'" style="margin-left: 20px">Login</button>
+					<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'">Sign</button>
+				</div>
+			</div>
+			<!-- question models -->
+			{% for question in questions %}
+				<div class="col-xs-4 col-md-4 col-sm-4" style="float: left;">
+					<div class="question-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+			    		<a>{{ question.file }}</a>
+			    	</div>
+		    	</div>
+			{% endfor %}
+
+		{% endif %}
+
 	
 </body>
 </html>
