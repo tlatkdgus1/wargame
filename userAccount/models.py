@@ -12,5 +12,6 @@ class Question(models.Model):
 
 class MyUser(AbstractUser):
 	question = models.ManyToManyField(Question)
+	score = models.IntegerField(default=0)
 
           
