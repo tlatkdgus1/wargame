@@ -1,10 +1,21 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import MyUser
 from .models import Question
 from django.contrib.auth import authenticate, login, logout as _logout
 
+
+class Start(TemplateView):
+	template_name='userAccount/index.html'
+
+class Index(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'userAccount/index.html', {'questions': questions})
+	
+	def post(self, request, *args, **kwargs):
+		return render(request, 'userAccount/index.html', {'questions': questions})
 
 class SignForm(View):
 	def get(self, request, *args, **kwargs):
@@ -23,7 +34,7 @@ class SignForm(View):
 			user_model.set_password(user_pw)
 			user_model.save()
 		except:
-			error = "중복된 아이디 입니다."
+			error = "This is already a registered ID."
 			return render(request, 'userAccount/signForm.html', {'error':error})
 
 		return render(request, 'userAccount/index.html', {'questions': questions})
@@ -43,7 +54,7 @@ class LoginForm(View):
 			solveQuestions = user.question.all()
 			return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
 		else:	
-			error = "아이디 혹은 비밀번호가 잘못되었습니다."
+			error = "Invalid ID or PW."
 			return render(request, 'userAccount/loginForm.html', {'error':error})
 
 def logout(request):
@@ -58,6 +69,7 @@ def checkFlag(request):
 	questions = Question.objects.order_by('score')
 	solveQuestions = current_user.question.all()
 
+	answer = ''
 	if question is None:
 		answer = 'Wrong !!'
 	elif question in solveQuestions:
@@ -68,4 +80,5 @@ def checkFlag(request):
 		current_user.save()
 		answer = 'Good !! You are solve this Question !!'
 
-	return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
+	return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions, 'answer':answer})
+

@@ -24,6 +24,7 @@
 		</div>
 		<div class="col-xs-6 col-md-6 col-sm-6" style="float: left;">
 			<div class="Auth-form" style="border-radius: 15px; padding: 25px; background-color: white; margin-top: 30px; margin-bottom: 30px" >
+				<center style="font-family: Baloo;">{{ answer }}</center>
 			   	<center><h1 style="color: black; padding: 30px;">Auth</h1></center>
 			   	<form name="flag" action={% url 'user:checkFlag' %} method="POST">{% csrf_token %}
 			   		<input type="text" class="form-control flag-field" value="" placeholder="Enter the Flag" name="flag" />
