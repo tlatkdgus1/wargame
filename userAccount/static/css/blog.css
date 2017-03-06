@@ -39,6 +39,12 @@ h1 p {
     display: inline-block;
 }
 
+h3 {
+    font-family: 'India-Flower'
+    font-size: 10pt;
+    display: inline-block;
+
+}
 a{
     color: black;
     font-family: 'Baloo';

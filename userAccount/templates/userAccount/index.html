@@ -9,7 +9,7 @@
  
 	<title>H@ck Wargame</title>
 </head>
-<body style="background-color: #BDC3C7 !important">
+<body style="background-color: #BDC3C0 !important">
 		
 		{% if user.is_authenticated %}
 	<div class="page-title col-xs-12 col-md-12 col-sm-12">
@@ -19,31 +19,44 @@
 			<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:logout' %}'" style="margin-left: 20px">Logout</a></button>
 		</div>
 	</div>
-	
-		<!-- question models -->
-			{% for question in questions %}
-		   		{{ question.title }}
-			{% endfor %}
 
 		{% else %}
 			<div class="page-title col-xs-12 col-md-12 col-sm-12">
 				<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>
 				<div style="height: auto; width: 100%; padding-left: 10px;"">
-					<h1><p style="display:inline-block; margin-top: 30px; margin-left: 400px">Login please</p></h1>
+					<h1><p style="display:inline-block; margin-top: 30px; margin-left: 600px">Login please</p></h1>
 					<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'" style="margin-left: 20px">Login</button>
 					<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'">Sign</button>
 				</div>
 			</div>
-			<!-- question models -->
-			{% for question in questions %}
-				<div class="col-xs-4 col-md-4 col-sm-4" style="float: left;">
-					<div class="question-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
-			    		<a>{{ question.file }}</a>
-			    	</div>
-		    	</div>
-			{% endfor %}
-
+			
 		{% endif %}
+		<div class="col-xs-3 col-md-3 col-sm-3">
+		</div>
+		<div class="col-xs-6 col-md-6 col-sm-6" style="float: left;">
+			<div class="Auth-form" style="border-radius: 15px; padding: 25px; background-color: white; margin-top: 30px; margin-bottom: 30px" >
+			   	<center><h1 style="color: black; padding: 30px;">Auth</h1></center>
+			   	<form>
+			   		<input type="text" class="form-control flag-field" value="" placeholder="Enter the Flag" name="flag" />
+			   	</form>
+			</div>
+		</div>
+		<div class="col-xs-3 col-md-3 col-sm-3">
+		</div>
+		<!-- question models -->
+		{% for question in questions %}
+			<div class="col-xs-4 col-md-4 col-sm-4" style="float: left">
+				<div class="question-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+			   		<h1 style="float: left;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px">  {{ question.score }}pt</h3>
+			   		</br></br>
+			   		{{question.text}}
+			   	</div>
+		    </div>
+		{% endfor %}
+
+
+
+
 
 	
 </body>

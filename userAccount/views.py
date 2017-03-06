@@ -31,13 +31,12 @@ class LoginForm(View):
 		user = authenticate(username=user_id, password=user_pw)
 		if user is not None:
 			login(request, user)
-			questions = Question.objects.all()
+			questions = Question.objects.order_by('score')
 			return render(request, 'userAccount/index.html', {'questions': questions})
-		else:
+		else:	
 			return render(request, 'userAccount/loginForm.html')
 
 def logout(request):
 	_logout(request)
 	questions = Question.objects.order_by('score')
 	return render(request, 'userAccount/index.html', {'questions': questions})
-	
