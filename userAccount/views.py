@@ -19,9 +19,14 @@ class SignForm(View):
 		user_pw = request.POST['user_pw']
 		user_email = request.POST['user_email']
 
-		user_model = MyUser.objects.create(username = user_id, email = user_email)
-		user_model.set_password(user_pw)
-		user_model.save()
+		if MyUser.objects.get(username=user_id) is None:
+			user_model = MyUser.objects.create(username = user_id, email = user_email)
+			user_model.set_password(user_pw)
+			user_model.save()
+		else:
+			error = "Already Register ID"
+			return render(request, 'userAccount/signForm.html', {'error':error})
+
 		return render(request, 'userAccount/index.html', {'questions': questions})
 
 class LoginForm(View):
@@ -39,7 +44,8 @@ class LoginForm(View):
 			solveQuestions = user.question.all()
 			return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
 		else:	
-			return render(request, 'userAccount/loginForm.html')
+			error = "ID or PW is Wrong"
+			return render(request, 'userAccount/loginForm.html', {'error':error})
 
 def logout(request):
 	_logout(request)

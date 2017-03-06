@@ -1,4 +1,3 @@
-
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
@@ -24,7 +23,9 @@
 			<div class="col-xs-4 col-md-4 col-sm-4">
 			</div>
 			<div class="col-xs-4 col-md-4 col-sm-4">
+			
 			    <div class="sign-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white" >
+					<center style="font-family: Baloo;">{{ error }}</center>
 					<center><h1>H@ck Wargame</h1></center>
 			     	<form name="sign" action={% url 'user:signForm' %} method="POST">{% csrf_token %}
 				        <div class="form-group" >
