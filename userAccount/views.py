@@ -2,14 +2,25 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 from django.views.generic import View
+from django.utils import timezone
 from .models import MyUser
 from .models import Question
 from django.contrib.auth import authenticate, login, logout as _logout
 
 
+class IndexForm(View):
+	def get(self, request, *args, **kwargs):
+		questions = Question.objects.order_by('score')
+		solveQuestions = request.user.question.all()
+		return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
+	
+	def post(self, request, *args, **kwargs):
+		questions = Question.objects.order_by('score')
+		solveQuestions = request.user.question.all()
+		return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions})
+
 class Start(TemplateView):
 	template_name='userAccount/index.html'
-
 
 class SignForm(View):
 	def get(self, request, *args, **kwargs):
@@ -17,7 +28,6 @@ class SignForm(View):
 		return response
 	
 	def post(self, request, *args, **kwargs):
-
 		questions = Question.objects.order_by('score')
 		user_id = request.POST['user_id']
 		user_pw = request.POST['user_pw']
@@ -71,6 +81,7 @@ def checkFlag(request):
 	else:
 		current_user.question.add(question)
 		current_user.score = current_user.score + question.score
+		current_user.solve = timezone.now()
 		current_user.save()
 		answer = 'Good !! You are solve this Question !!'
 
@@ -78,8 +89,7 @@ def checkFlag(request):
 
 class RankingForm(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'userAccount/rankingForm.html', {'users': MyUser.objects.order_by('-score')})
+		return render(request, 'userAccount/rankingForm.html', {'users': MyUser.objects.order_by('-score', 'solve')})
 
 	def post(self, request, *args, **kwargs):
-		return render(request, 'userAccount/rankingForm.html', {'users': MyUser.objects.order_by('-score')})
-
+		return render(request, 'userAccount/rankingForm.html', {'users': MyUser.objects.order_by('-score', 'solve')})

@@ -15,12 +15,12 @@
 }
 
 h1 a {
-    color: #FCA205;
+    color : white;
     font-family: 'Baloo';
 }
 
 h1 {
-    color: #FCA205;
+    color : orange;
     font-family: 'Baloo';
     margin-bottom: 20px;
 }
@@ -37,8 +37,4 @@ h1 p {
 h3 {
     font-family: 'India-Flower'
     font-size: 10pt;
-}
-a{
-    color: black;
-    font-family: 'Baloo';
 }
