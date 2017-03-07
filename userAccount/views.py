@@ -10,12 +10,6 @@ from django.contrib.auth import authenticate, login, logout as _logout
 class Start(TemplateView):
 	template_name='userAccount/index.html'
 
-class Index(View):
-	def get(self, request, *args, **kwargs):
-		return render(request, 'userAccount/index.html', {'questions': questions})
-	
-	def post(self, request, *args, **kwargs):
-		return render(request, 'userAccount/index.html', {'questions': questions})
 
 class SignForm(View):
 	def get(self, request, *args, **kwargs):
@@ -60,7 +54,7 @@ class LoginForm(View):
 def logout(request):
 	_logout(request)
 	questions = Question.objects.order_by('score')
-	return render(request, 'userAccount/index.html', {'questions': questions})
+	return render(request, 'userAccount/index.html')
 
 def checkFlag(request):
 	input_flag = request.POST['flag']

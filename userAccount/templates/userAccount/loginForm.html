@@ -25,7 +25,7 @@
 
 			    <div class="login-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white" >		
 						<center style="font-family: Baloo;">{{ error }}</center>
-			    		<center><h1><a href="userAccount/index.html">H@ck Wargame</a></h1></center>
+			    		<center><h1><a href='{% url 'user:start' %}'">H@ck Wargame</a></h1></center>
 			     	<form name="login" action={% url 'user:loginForm' %} method="POST">{% csrf_token %}
 				        <div class="form-group">
 				            <input type="text" class="form-control login-field" value="" placeholder="Enter your Id" name="user_id" />
