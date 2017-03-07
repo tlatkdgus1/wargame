@@ -76,3 +76,10 @@ def checkFlag(request):
 
 	return render(request, 'userAccount/index.html', {'questions': questions, 'solveQuestions':solveQuestions, 'answer':answer})
 
+class RankingForm(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, 'userAccount/rankingForm.html', {'users': MyUser.objects.order_by('-score')})
+
+	def post(self, request, *args, **kwargs):
+		return render(request, 'userAccount/rankingForm.html', {'users': MyUser.objects.order_by('-score')})
+

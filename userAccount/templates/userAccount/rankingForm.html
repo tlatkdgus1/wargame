@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<title></title>
+</head>
+<body style="background-color: orange">
+<div class="col-xs-4 col-md-4 col-sm-4">
+</div>
+<div class="col-xs-4 col-md-4 col-sm-4">
+	<br>
+	<br>
+	<center><h1 style="font-family: 'Baloo';font-size: 40px; color: white">Scoreboard</h1></center>
+	<div class="question-form" style="height: auto; width: 100%; border: 5px solid white ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+		{% for user in users %}
+		</br>
+		<h1 style="float: left;">{{ forloop.counter }}.&nbsp</h1> 
+		<h1 style="color: black; float: left;">{{ user.username }}</h1>
+		<h3 style="padding-left: 20px; font-family: 'Baloo';font-size: 20px; ">{{ user.score }}pt</h3> 
+		</br>
+		</br>
+		<hr style="margin-top: 20px; border: solid 1px black;">
+		{% endfor %}
+	</div>
+</div>
+<script type="text/javascript">
+
+
+</script>
+</body>
+</html>
