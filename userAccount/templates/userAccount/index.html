@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet" type="text/css">
+
+
+ 
 	<title>H@ck Wargame</title>
 </head>
 <body style="background-color: #BDC3C7!important">
@@ -50,7 +53,7 @@
 			{% for question in questions %}
 				{% if question in solveQuestions %}
 				<div class="col-xs-4 col-md-4 col-sm-4" style="float: left">
-					<div class="question-form" style="height: auto; width: 100%; border: 5px solid #33FF00 ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+					<div class="question-form" style="height: 40%; width: 100%; border: 5px solid #33FF00 ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
 				   		<h1 style="float: left;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px">  {{ question.score }}pt</h3>
 				   		</br></br>
 				   		{{question.text}}
@@ -58,26 +61,27 @@
 				   		{% if question.url != "" %}
 				   		</br> URL : <a href="{{question.url}}">{{question.url}}</a>
 				   		{% endif %}
-				   		{% if question.file != None %}
+				   		{% if question.file.url != "" %}
 				   		</br> FILE : <a href="{{question.file.url}}">Download</a>
 				   		{% endif %}
 				   	</div>
 				</div>
 				{% else %}
 				<div class="col-xs-4 col-md-4 col-sm-4" style="float: left">
-				   	<div class="question-form" style="height: auto; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
+				   	<div class="question-form" style="height: 40%; width: 100%; border: 5px solid orange ;border-radius: 15px; padding: 25px; background-color: white; margin-top: 10px" >
 				   		<h1 style="float: left;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px">  {{ question.score }}pt</h3>
 				   		</br></br>
 				   		{{question.text}}
 				   		</br>
-				   		{% if question.url != None %}
+				   		{% if question.url != "" %}
 				   		</br> URL : <a href="{{question.url}}">{{question.url}}</a> 
 				   		{% endif %}
-				   		{% if question.file != None %}
+				   		{% if question.file.url != "" %}
 				   		</br> FILE : <a href="{{question.file.url}}">Download</a>
 				   		{% endif %}
 				   	</div>
 			    </div>
+			    </br>
 			    {% endif %}
 			{% endfor %}
 		{% else %}
