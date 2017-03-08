@@ -74,7 +74,7 @@ def checkFlag(request):
 	solveQuestions = current_user.question.all()
 
 	answer = ''
-	if question is None:
+	if question == None:
 		answer = 'Wrong !!'
 	elif question in solveQuestions:
 		answer = 'You are already solve this Question !!'
