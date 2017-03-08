@@ -6,8 +6,6 @@
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Baloo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet" type="text/css">
-
- 
 	<title>H@ck Wargame</title>
 </head>
 <body style="background-color: #BDC3C7!important">
@@ -37,8 +35,8 @@
 		{% else %}
 			<div class="page-title col-xs-12 col-md-12 col-sm-12">
 				<h1 style="float:left; margin-left: 20px">H@ck Wargame</h1>
-				<div style="height: auto; width: 100%; padding-left: 10px;">
-					<h1><p style="display:inline-block; float: left; margin-top: 30px; margin-left: 500px">Login please</p></h1>
+				<div style="padding-left: 10px;">
+					<h1><p style="float: left; margin-top: 30px; margin-left: 500px">Login please</p></h1>
 					<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:loginForm' %}'" style="margin-left: 20px; margin-top: 20px">Login</button>
 					<button type="button" class="btn btn-warning" onclick="location.href='{% url 'user:signForm' %}'" style="margin-top: 20px">Sign</button>
 				</div>
@@ -56,6 +54,13 @@
 				   		<h1 style="float: left;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px">  {{ question.score }}pt</h3>
 				   		</br></br>
 				   		{{question.text}}
+				   		</br>
+				   		{% if question.url != "" %}
+				   		</br> URL : <a href="{{question.url}}">{{question.url}}</a>
+				   		{% endif %}
+				   		{% if question.file != None %}
+				   		</br> FILE : <a href="{{question.file.url}}">Download</a>
+				   		{% endif %}
 				   	</div>
 				</div>
 				{% else %}
@@ -64,12 +69,19 @@
 				   		<h1 style="float: left;">{{ question.title }}</h1> <h3 style="padding-left: 10px; font-family: 'Baloo';font-size: 13px">  {{ question.score }}pt</h3>
 				   		</br></br>
 				   		{{question.text}}
+				   		</br>
+				   		{% if question.url != None %}
+				   		</br> URL : <a href="{{question.url}}">{{question.url}}</a> 
+				   		{% endif %}
+				   		{% if question.file != None %}
+				   		</br> FILE : <a href="{{question.file.url}}">Download</a>
+				   		{% endif %}
 				   	</div>
 			    </div>
 			    {% endif %}
 			{% endfor %}
 		{% else %}
-			<center style='margin-top: 20px'><h1 style="font-family: 'hanna'; color: black;">H@ck 동아리 Wargame site</h1></center>
+			<center><h1 style="font-family: 'hanna'; color: black;margin-bottom: 10px">H@ck Wargame site</h1></center>
 			<script src="//d3js.org/d3.v3.min.js"></script>
 			<script>
 			var width = window.innerWidth,

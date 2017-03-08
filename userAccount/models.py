@@ -1,13 +1,14 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
-
+from django.conf import settings 
 
 class Question(models.Model):
 	title = models.TextField()
 	score = models.IntegerField(default=0)
 	text = models.TextField()
-	file = models.FileField('question/', blank=True, null=True)
+	url = models.URLField(blank=True, null=True)
+	file = models.FileField(blank=True, null=True)
 	flag = models.TextField(unique=True)
 
 
