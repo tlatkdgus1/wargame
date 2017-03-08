@@ -69,12 +69,16 @@ def logout(request):
 def checkFlag(request):
 	input_flag = request.POST['flag']
 	current_user = request.user
-	question = Question.objects.get(flag=input_flag)
+	try:
+		question = Question.objects.get(flag=input_flag)
+	except:
+		question = None
+	
 	questions = Question.objects.order_by('score')
 	solveQuestions = current_user.question.all()
 
 	answer = ''
-	if question is None:
+	if question == None:
 		answer = 'Wrong !!'
 	elif question in solveQuestions:
 		answer = 'You are already solve this Question !!'
