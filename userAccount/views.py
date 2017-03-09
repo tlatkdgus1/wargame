@@ -41,7 +41,7 @@ class SignForm(View):
 			error = "This is already a registered ID."
 			return render(request, 'userAccount/signForm.html', {'error':error})
 
-		return render(request, 'userAccount/index.html', {'questions': questions})
+		return render(request, 'userAccount/index.html')
 
 class LoginForm(View):
 	def get(self, request, *args, **kwargs):
