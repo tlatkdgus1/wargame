@@ -11,3 +11,4 @@ How to add admin?
 
 Where do I admin login ?
   => localhost:port/admin
+# MeisterCup
